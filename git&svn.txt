@@ -1,0 +1,67 @@
+代码管理工具:
+	svn:集中式代码分步工具;
+		sinaapp.com-->先update再commit;
+
+linux命令:没有提示就是成功
+	查看目录下所有的东西: ls
+	退回上一级目录: cd ..
+	切换到某个目录: cd 目录名
+	创建文件: touch 文件名;
+	清屏: clear;
+	删除文件: rm 文件名;
+	编辑文件: 
+		1>.vi 文件名
+		2>.按下 i 键,输入文本
+		3>.按ESC,再按:wq;
+	查看文件内容:cat 文件名;	
+	创建文件夹: mkdir 文件名;
+	删除文件夹: rmdir 文件名;	
+	创建文件并且输入内容: echo welcome to china > b.txt
+
+git:分布式代码管理工具; 工作区 ---》 缓存区 ---》远程仓库
+
+	本地生成密钥:
+		ssh -keygen -t rsa -C 'email@xx.com' 一路回车;生成后的密钥在:c/users/administaator/..ssh/id_rsa
+		.pub的是共有的密钥, 另外一个是私有的;
+		一定要用记事本打开这个密钥，复制，粘贴到github settings ssh and GPG keys中,点击add;
+	
+	配置一下我是谁:
+		git config -l 查看此时的配置文件;
+		git config --global user.email 'xx@xx.coom'
+		git config --global user.name 'username'
+	跟github建立起关联：
+		git remote add origin 
+	推送到远程：
+		git push -u origin master
+	
+	只有第一次需要git push -u origin master,以后就不需要了，直接git push 就ok了;
+		
+
+	第一种方法: 
+		1>. git init： 将本地目录变成git目录;
+		2>. git status：查看此时git的状态;
+		3>. git add . 将工作区文件添加到缓存区;
+		4>. git commit -m '备注' 提交,从缓存区到仓库;
+		5>. 
+
+
+
+
+
+								
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+

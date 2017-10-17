@@ -1,0 +1,25 @@
+什么是“回文”？
+"12321"是回文，"abcba"也是回文，在我的理解，如果将一个字符串翻转过来，能和原字符串完全相等，那么就可以称之为“回文”。
+利用我上面所说的特性，很容易用JS写出下面的判断回文方法：
+
+方法一：
+
+function isPalindrome(line) {  
+    line += "";  
+    for(var i=0,j=line.length-1;i<j;i++,j--){  
+        if(line.charAt(i) !== line.charAt(j)){  
+            return false;  
+        }  
+    }  
+    return true;  
+}
+
+方法二：
+
+这种方法很方便，但效率不高，字符串分割，倒转，聚合都需要很多额外的操作。
+最好的方法，是从字符串头部和尾部，逐次向中间检测。（也就是方法一）
+
+function isPalindrome(line) {  
+    line += "";  
+    return line === line.split("").reverse().join("");  
+}    

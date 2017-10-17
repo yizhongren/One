@@ -1,0 +1,198 @@
+前端自动化工具:grunt ---> gruntjs.com
+	压缩代码,
+	合并代码,
+	压缩图片,
+	语法检查···
+	
+基于nodeJS --> 
+	node -V
+	npm --version
+
+------------------------------------------
+基本功能演示:
+1.安装 grunt 命令环境: 
+	npm install grunt-cli -g
+	验证grunt环境是否安装成功: grunt --version
+	
+2.准备两个文件:
+	Gruntfile.js ---> 编写任务;名称区分大小写;	
+	package.json ---> 工程文件[也就是项目的配置文件,依赖模块];
+
+3.编写具体的任务:
+module.exports = function(grunt){
+			
+}
+
+4.安装本地grunt:
+	切换到对应的目录下执行: npm install grunt
+
+5.运行任务:先找到Gruntfile.js所在的目录;
+	执行grunt;
+-----------------------------------------------
+构建自动化任务
+	需要借助插件:
+	contrib开头: grunt团队自己开发的,其他是第三方开发;
+
+1>.第一个插件:
+	压缩JS:contrib-uglify
+	下载压缩JS的模块:npm install grunt-contrib-uglify;	
+	使用的时候前面需要加上grunt: grunt-contrib-uglify
+	
+	
+2>.编写任务:
+module.exports = function(grunt)}{
+	grunt.loadNpmTasks('grunt-contrib-uglify');//倒入模块;
+	//配置任务:
+	grunt.initConfig({
+		uglify[主任务名称-主任务名称必须跟插件的名称保持一致]:{
+			a[子任务名称]:{
+				src:'src/a.js',//要压缩的文件的路径;
+				dest:'dest/a.min.js'//压缩之后的目标文件的地址;
+			},
+			b[子任务名称]:{
+				src:'src/b.js',//要压缩的文件的路径;
+				dest:'dest/b.min.js'//压缩之后的目标文件的地址;
+			}
+		}
+	})	
+}
+
+3>.运行: grunt uglify
+	运行会改变参数名称,如果不想改变名称的话,需要配置选项:
+	options: {
+		mangle: false
+	}
+
+4>.每次都需要手动执行任务比较麻烦,可以配置默认任务:
+	grunt.registerTask('default',['ufligy']);		
+	运行: grunt就可以了;
+
+其他需求:
+	1>.  src:'**/*.js'//代表压缩任何目录下的所有的js文件;
+	2>.  多个文件的时候压缩会合并JS文件，如果想压缩不合并,expand: true代表分开压缩;expand最好和cwd结合使用，cmd代表当前的工作目录;
+
+其他模块或者插件:
+	合并CSS: grunt-contrib-concat
+	压缩CSS: grunt-contrib-cssmin
+		cssmin:{
+			a:{
+				expand: true,
+				cwd: 'src',
+				src: 'css/*.css',
+				dest: 'dest/css'
+			}
+		}
+	压缩html:grunt-contrib-htmlmin
+		htmlmin:{
+			options:{
+				removeComments: true,//删除注释
+				collapseWhitespace: true//折叠空白
+			},
+			a:{
+				src: 'src/a.html',
+				dest: 'dest/a.html'
+			}
+		}
+	压缩图片:grunt-contrib-imagemin:
+		imagemin:{
+			a:{
+				src: 'src/img/a.png',
+				dest: 'dest/img/a.png'
+			}
+		}
+		
+------------------------------------------------------------
+监视监听:解决每次都需要在命令行运行grunt的问题:
+grunt-contrib-watch
+
+grunt.initConfig({
+	watch:{
+		a:{
+			files:['src/index.css','images/1.jpg'],
+			tasks:['cssmin','imagemin']
+		}
+	}
+});	
+grunt.registerTask('default',['uglify','cssmin','imagemin','watch']);
+执行: grunt
+
+package.json:工程文件,配置项目的模块依赖;
+	方法1>. npm init --yes  默认创建package.json
+	方法2>. npm init
+
+--save:
+	不仅会把插件安装到本目录,还会写入到package.json里面;
+ --save -dev: 
+	开发所依赖的模块; 好处是:同事拿到你的代码以后[不需要发送node_modules文件夹],只需要执行:npm install会自动安装插件依赖, grunt运行就可以了;
+
+---------------------------------------------------------------------
+
+gulp:gulpjs.com
+	gulp运行速度比grunt更快;
+
+1>.npm install gulp-cli -g
+	验证: gulp --version
+
+   npm install gulp --save -dev
+
+2>.准备两个文件：
+	gulpfile.js
+		var gulp = require('gulp');
+		gulp.task('a',function(){
+			console.log('第一个gulp');
+		});	
+	运行: gulp a//a就是任务名称,可以随便写
+
+	package.json
+		npm init --yes
+	
+3>.运行: gulp a
+
+压缩: gulp-uglify: npm install gul-uglify --save -dev
+	var uglify = require('gulp-uglify');//引入插件;
+	//注册任务
+	gulp.task('yasuo',function(){
+		//源文件['js/sum.js'] 执行的任务[uglify()] 输出到哪里去[gulp.dest('dest')]
+		gulp.src('js/sum.js')
+		.pipe(uglify())
+		.pipe(gulp.dest('dest'));
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

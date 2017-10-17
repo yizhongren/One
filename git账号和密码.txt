@@ -1,0 +1,20 @@
+
+
+
+如何将文件提交上去
+git init 				实例化启动git
+git remote add origin “git@github.com:duyu-DDK/DDK.git”		添加远程地址
+git remote -v   			查看
+git add . 				将工作区放到缓存区
+git commit -m "描述"			将缓存区放到本地仓库区
+git pull origin master 		dang代码
+git push -u origin master 		提交代码
+
+
+Git与GitHub安装与配置
+http://blog.csdn.net/zxd0328/article/details/42403749
+
+
+gulp的安装和使用
+http://weibo.com/ttarticle/p/show?id=2309404140377564181729#_0
+https://github.com/yizhongren/haha.git

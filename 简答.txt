@@ -1,0 +1,57 @@
+响应式
+	优点
+
+    其一，在分辨率不同，设备环境进行一些不同的设计，所有开发维护和运营上，相对多个版本成本会降低很多。
+
+　　其二，兼容性好，跨平台，移动设备尺寸参差不齐，版本定制通常只适用于固定规格的设备，但不适用分辨率变化较大的设备。
+
+　　第三，方便改动，响应式设计是针对页面的，可以只对必要的页面进行改动，其他页面不受影响。
+
+	缺点
+
+    1.页面加载的代码多了，导致文件增大，影响加载速度；
+
+　　2.在响应式设计中，图片、视频等资源一般是统一加载的，这就导致在低分辨率的机子上，实际加载了大于它的显示要求的图片或视频，导致不必要的流量浪费，影响加载速度；
+
+　　3.局限性，对于响应式，局限性较大，不适合一些大型的门户网或者电商网站，一般门户网或电商网站一个界面内容较多，而响应式最忌讳较多内容，代码过多会影响运行速度。
+
+自适应
+
+	静态布局：意思就是不管浏览器尺寸具体是多少，网页布局就按照当时写代码的布局来布置；
+	自适应布局：就是说你看到的页面，里面元素的位置会变化而大小不会变化；
+	流式布局：你看到的页面，元素的大小会变化而位置不会变化——这就导致如果屏幕太大或者太小都会导致元素无法正常显示。
+	自适应布局：每个屏幕分辨率下面会有一个布局样式，同时位置会变而且大小也会
+
+
+第二题
+
+
+1、创建文件夹
+2、切换到该文件夹下 初始化 git init
+3、查看状态	git status
+4、新建 文件（a.txt） 
+5、将文件加入暂存区  		git add 文件名 / git add .
+6、将文件添加到工作区并加注释
+
+
+第三题
+
+1.gulp-uglify （JS压缩）  2.gulp-minify-css（CSS压缩）  3.gulp-minify-html（html压缩）  4.gulp-jshint（JS代码检查）  5.gulp-concat（文件合并） 
+  6.gulp-less（编译Less）  7.gulp-sass（编译Sass）   8.gulp-imagemin（压缩图片）  9.gulp-livereload（自动刷新） 
+
+第四题
+
+	var xmlhttp;
+			if(window.XMLHttpRequest){
+				xmlhttp=new XMLHttpRequest;
+			}else{
+				xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.open("GET","http://localhost:2222",true);
+			xmlhttp.send();
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState==4&&xmlhttp.status==200){
+					var data=JSON.parse(xmlhttp.responseText);
+				}
+			}
+
